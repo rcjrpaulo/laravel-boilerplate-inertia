@@ -2,20 +2,25 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Permission extends Model
 {
-	protected $table = 'permissions';
+    use SoftDeletes;
+    use HasFactory;
 
-	protected $fillable = [
-		'name',
-		'label',
-		'group_label'
-	];
+    protected $table = 'permissions';
 
-	public function roles()
-	{
-		return $this->belongsToMany(Role::class);
-	}
+    protected $fillable = [
+        'name',
+        'label',
+        'group_label'
+    ];
+
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class);
+    }
 }
