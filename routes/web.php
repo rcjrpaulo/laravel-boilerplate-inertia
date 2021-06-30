@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Web\RoleController;
+use App\Http\Controllers\Web\UserController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -24,8 +26,19 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::group(['middleware' => 'auth'], function () {
+    /*
+     * Resources
+     * */
+    Route::resource('users', UserController::class);
+    Route::resource('roles', RoleController::class);
+
+    /*
+     * Routes
+     * */
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+});
 
 require __DIR__.'/auth.php';
