@@ -46,6 +46,12 @@ class User extends Authenticatable
     ];
 
     /**
+     * Appends
+     * @var string[]
+     */
+    protected $appends = ['photo_url'];
+
+    /**
      * Relationships
      */
     public function role()
