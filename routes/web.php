@@ -39,6 +39,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+
+    Route::post('roles/update-permissions/{role}', [RoleController::class => 'updatePermissions']);
 });
 
 require __DIR__.'/auth.php';
