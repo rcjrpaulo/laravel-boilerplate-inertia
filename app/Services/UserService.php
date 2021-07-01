@@ -14,8 +14,8 @@ class UserService
     public function index(array $filters = [], $relations = [], bool $pagination = false, int $itemsPerPage = 20)
     {
         request()->merge([
-            'unexpected_error_message' => 'Oops ! Houve um problema ao tentar criar usuário',
-        ]);
+                             'unexpected_error_message' => 'Oops ! Houve um problema ao tentar criar usuário',
+                         ]);
 
         return User::filterByName(Arr::get($filters, 'name'))
             ->with($relations)
@@ -33,14 +33,14 @@ class UserService
     public function store(array $data)
     {
         request()->merge([
-            'unexpected_error_message' => 'Oops ! Houve um problema ao tentar criar usuário',
-        ]);
+                             'unexpected_error_message' => 'Oops ! Houve um problema ao tentar criar usuário',
+                         ]);
 
         $data['password'] = bcrypt($data['password']);
 
         $user = User::create($data);
 
-        if (request()->hasFile('photo')) {
+        if (request()->hasFile('photo') && request()->file('photo')->isValid()) {
             $photo = request()->photo->store("files/user/{$user->id}");
             $user->update(['photo' => $photo]);
         }
@@ -51,10 +51,10 @@ class UserService
     public function update(User $user, array $data)
     {
         request()->merge([
-            'unexpected_error_message' => 'Oops ! Houve um problema ao tentar atualizar usuário',
-        ]);
+                             'unexpected_error_message' => 'Oops ! Houve um problema ao tentar atualizar usuário',
+                         ]);
 
-        if (request()->hasFile('photo')) {
+        if (request()->hasFile('photo') && request()->file('photo')->isValid()) {
             $photo = request()->photo->store("files/user/{$user->id}");
             $data['photo'] = $photo;
             if (Storage::exists($user->photo)) {
@@ -74,8 +74,8 @@ class UserService
     public function destroy(User $user)
     {
         request()->merge([
-             'unexpected_error_message' => 'Oops ! Houve um problema ao tentar deletar usuário',
-         ]);
+                             'unexpected_error_message' => 'Oops ! Houve um problema ao tentar deletar usuário',
+                         ]);
 
         if (Storage::exists($user->photo)) {
             Storage::delete($user->photo);
