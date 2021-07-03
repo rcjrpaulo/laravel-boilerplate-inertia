@@ -50,7 +50,6 @@
         </aside>
         <div class="content-wrapper" style="min-height: 565.493px;">
           <section class="content">
-
             <div class="content-header" v-if="$slots.header">
               <div class="container-fluid">
                 <slot name="header" />
@@ -58,6 +57,8 @@
             </div>
 
             <div class="container-fluid">
+              <breeze-validation-errors class="m-4" />
+
               <slot />
             </div>
           </section>
@@ -74,6 +75,7 @@
     import BreezeDropdownLink from '@/Components/DropdownLink'
     import BreezeNavLink from '@/Components/NavLink'
     import BreezeResponsiveNavLink from '@/Components/ResponsiveNavLink'
+    import BreezeValidationErrors from '@/Components/ValidationErrors'
 
     export default {
         components: {
@@ -82,6 +84,7 @@
             BreezeDropdownLink,
             BreezeNavLink,
             BreezeResponsiveNavLink,
+            BreezeValidationErrors,
         },
 
         data() {
