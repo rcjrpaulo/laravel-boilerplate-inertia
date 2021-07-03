@@ -68,7 +68,7 @@
 
                 <div class="card-tools">
                   <inertia-link
-                    href="/admin/users/create"
+                    :href="route('users.create')"
                     class="btn btn-primary"
                   >
                     <i class="fa fa-plus"></i>

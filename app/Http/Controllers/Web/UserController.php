@@ -34,8 +34,8 @@ class UserController extends Controller
         $this->authorize('create_users');
 
         $roles = Role::get(['id', 'label']);
-
-        return view('users.create', compact('roles'));
+    
+        return Inertia::render('User/Create', compact('roles'));
     }
 
     public function store(StoreUserRequest $storeUserRequest)
@@ -52,8 +52,10 @@ class UserController extends Controller
     public function show(User $user)
     {
         $this->authorize('read_users');
-
-        return view('users.show', compact('user'));
+    
+        $roles = Role::get(['id', 'label']);
+    
+        return Inertia::render('User/Create', compact('roles'));
     }
 
     public function edit(User $user)
