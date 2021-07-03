@@ -33,7 +33,7 @@
                   </inertia-link>
                 </li>
                 <li class="nav-item">
-                  <inertia-link :href="route('dashboard')" :class="'nav-link my-2 text-white'">
+                  <inertia-link :href="route('users.index')" :class="'nav-link my-2 text-white'">
                     <i class="nav-icon fas fa-user-alt"></i>
                     Usuários
                   </inertia-link>

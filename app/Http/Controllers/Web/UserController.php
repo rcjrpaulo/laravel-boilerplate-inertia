@@ -11,19 +11,22 @@ use App\Services\Users\ListUserService;
 use App\Services\Users\StoreUserService;
 use App\Services\Users\UpdateUserService;
 use App\Services\Users\DestroyUserService;
+use Inertia\Inertia;
 
 class UserController extends Controller
 {
     public function index()
     {
         $this->authorize('read_users');
-
+    
         $users = (new ListUserService())->run(
             request()->query(),
-            ['role']
+            ['role'],
+            request()->get('pagination', true),
+            request()->get('items_per_page', 20)
         );
-
-        return view('users.index', compact('users'));
+    
+        return Inertia::render('User/Index', compact('users'));
     }
 
     public function create()
