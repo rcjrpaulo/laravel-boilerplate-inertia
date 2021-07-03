@@ -100,14 +100,14 @@
                       <td>{{ user.created_at_label }}</td>
                       <td>
                         <inertia-link
-                          :href="`/admin/users/show/${user.id}`"
+                          :href="route('users.show', user.id)"
                           class="btn btn-sm btn-outline-primary"
                           title="Ver"
                         >
                           <i class="fa fa-eye"></i>
                         </inertia-link>
                         <inertia-link
-                          :href="`/admin/users/edit/${user.id}`"
+                          :href="route('users.edit', user.id)"
                           class="btn btn-sm btn-outline-warning"
                           title="Editar"
                         >

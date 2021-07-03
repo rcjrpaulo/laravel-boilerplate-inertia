@@ -21017,7 +21017,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(user.created_at_label), 1
         /* TEXT */
         ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
-          href: "/admin/users/show/".concat(user.id),
+          href: _ctx.route('users.show', user.id),
           "class": "btn btn-sm btn-outline-primary",
           title: "Ver"
         }, {
@@ -21030,7 +21030,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         }, 1032
         /* PROPS, DYNAMIC_SLOTS */
         , ["href"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
-          href: "/admin/users/edit/".concat(user.id),
+          href: _ctx.route('users.edit', user.id),
           "class": "btn btn-sm btn-outline-warning",
           title: "Editar"
         }, {

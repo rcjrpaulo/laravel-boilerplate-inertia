@@ -45,6 +45,11 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    
+    protected $appends = [
+        'photo_url',
+        'created_at_label',
+    ];
 
     /**
      * Relationships
@@ -77,5 +82,13 @@ class User extends Authenticatable
         }
 
         return Storage::url($this->photo);
+    }
+    public function getCreatedAtLabelAttribute()
+    {
+        if (empty($this->created_at)) {
+            return '';
+        }
+
+        return $this->created_at->format('d/m/Y H:i');
     }
 }
