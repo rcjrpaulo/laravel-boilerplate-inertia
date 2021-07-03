@@ -105,7 +105,7 @@ class Handler extends ExceptionHandler
                         $unexpectedErrorMessage));
                 }
 
-                return response()->view('errors.error', [], 500);
+                return back();
             }
         });
 
@@ -142,7 +142,7 @@ class Handler extends ExceptionHandler
                         $unexpectedErrorMessage));
                 }
 
-                return response()->view('errors.error', [], 500);
+                return back();
             }
         });
     }
