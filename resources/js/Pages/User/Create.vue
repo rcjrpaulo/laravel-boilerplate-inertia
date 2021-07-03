@@ -20,26 +20,26 @@
                 <h3 class="card-title">Criar usuário</h3>
             </div>
 
-            <form role="form">
+            <form role="form" @submit.prevent="createUser">
                 <div class="card-body">
                     <div class="form-group">
                         <label for="name">Nome</label>
-                        <input type="text" class="form-control" id="name" name="name" v-model="form.name">
+                        <input type="text" class="form-control" id="name" name="name" v-model="form.name" required>
                     </div>
 
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="text" class="form-control" id="email" name="email" v-model="form.email">
+                        <input type="email" class="form-control" id="email" name="email" v-model="form.email" required>
                     </div>
 
                     <div class="form-group">
                         <label for="password">Senha</label>
-                        <input type="password" class="form-control" id="password" name="password" v-model="form.password">
+                        <input type="password" class="form-control" id="password" name="password" v-model="form.password" required>
                     </div>
 
                     <div class="form-group">
                         <label for="role_id">Papel</label>
-                        <select class="form-control" id="role_id" name="role_id" v-model="form.role_id">
+                        <select class="form-control" id="role_id" name="role_id" v-model="form.role_id" required>
                             <option v-for="(role, index) in roles" :value="role.id" :key="index">{{role.label}}</option>
                         </select>
                     </div>
@@ -65,9 +65,9 @@
                         Voltar
                     </inertia-link>
 
-                    <a @click="createUser" href="javascript:void(0)" class="btn btn-success">
+                    <button type="submit" class="btn btn-success">
                         Salvar
-                    </a>
+                    </button>
                 </div>
             </form>
         </div>
