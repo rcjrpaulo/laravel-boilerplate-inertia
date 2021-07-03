@@ -44,7 +44,7 @@
 
                     <div class="form-group">
                         <label for="role_id">Papel</label>
-                        <input disabled="disabled" class="form-control" id="role_id" name="role_id" :value="user.role.name">
+                        <input disabled="disabled" class="form-control" id="role_id" name="role_id" :value="user.role.label">
                     </div>
                 </div>
 

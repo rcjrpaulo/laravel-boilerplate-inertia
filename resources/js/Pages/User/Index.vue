@@ -96,7 +96,7 @@
                         {{ user.name }}
                       </td>
                       <td>{{ user.email }}</td>
-                      <td>{{ user.role.name }}</td>
+                      <td>{{ user.role.label }}</td>
                       <td>{{ user.created_at_label }}</td>
                       <td>
                         <inertia-link
