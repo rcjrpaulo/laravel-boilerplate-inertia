@@ -18,7 +18,7 @@
           <a href="javascript:void(0)" class="brand-link"><span class="brand-text font-weight-light"><img loading="lazy" width="50" src="/dist/img/AdminLTELogo.png"></span></a>
           <div class="sidebar">
             <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-              <div class="image"><img :src="$page.props.auth.user.photo || '/images/profile.png'" alt="User Image" class="img-circle elevation-2"></div>
+              <div class="image"><img :src="$page.props.auth.user.photo ? `/${$page.props.auth.user.photo}` : '/images/profile.png'" alt="User Image" class="img-circle elevation-2"></div>
               <div class="info"><a href="#" class="d-block">
                 {{ $page.props.auth.user.name }}
               </a>

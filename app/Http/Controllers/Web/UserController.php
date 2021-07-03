@@ -53,9 +53,9 @@ class UserController extends Controller
     {
         $this->authorize('read_users');
     
-        $roles = Role::get(['id', 'label']);
+        $user = $user->load('role');
     
-        return Inertia::render('User/Create', compact('roles'));
+        return Inertia::render('User/Show', compact('user'));
     }
 
     public function edit(User $user)
