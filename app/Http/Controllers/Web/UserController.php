@@ -63,8 +63,9 @@ class UserController extends Controller
         $this->authorize('update_users');
 
         $roles = Role::get(['id', 'label']);
-
-        return view('users.edit', compact('user', 'roles'));
+        $user = $user->load('role');
+    
+        return Inertia::render('User/Edit', compact('user', 'roles'));
     }
 
     public function update(UpdateUserRequest $updateUserRequest, User $user)
