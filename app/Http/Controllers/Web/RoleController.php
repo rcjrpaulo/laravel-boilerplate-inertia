@@ -11,6 +11,7 @@ use App\Services\Roles\DestroyRolesService;
 use App\Services\Roles\ListRolesService;
 use App\Services\Roles\StoreRolesService;
 use App\Services\Roles\UpdateRolesService;
+use Inertia\Inertia;
 
 class RoleController extends Controller
 {
@@ -21,10 +22,12 @@ class RoleController extends Controller
 
         $roles = (new ListRolesService())->run(
             request()->query(),
-            []
+            [],
+            request()->get('pagination', true),
+            request()->get('items_per_page', 20)
         );
-
-        return view('roles.index', compact('roles'));
+    
+        return Inertia::render('Role/Index', compact('roles'));
     }
 
     public function create()

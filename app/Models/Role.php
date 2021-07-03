@@ -17,6 +17,8 @@ class Role extends Model
         'name',
         'label'
     ];
+    
+    protected $appends = ['created_at_label'];
 
     /**
      * Relationships
@@ -43,6 +45,7 @@ class Role extends Model
             }
         );
     }
+    
     public function scopeFilterByLabel(Builder $builder, $label)
     {
         return $builder->when(
@@ -51,5 +54,17 @@ class Role extends Model
                 return $builder->where('label', 'like', "%$label%");
             }
         );
+    }
+    
+    /**
+     * Accessors
+     */
+    public function getCreatedAtLabelAttribute()
+    {
+        if (empty($this->created_at)) {
+            return '';
+        }
+        
+        return $this->created_at->format('d/m/Y H:i');
     }
 }

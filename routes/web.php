@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Web\RoleController;
 use App\Http\Controllers\Web\UserController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -30,7 +31,7 @@ Route::group(['middleware' => 'auth'], function () {
      * Resources
      * */
     Route::resource('users', UserController::class);
-//    Route::resource('roles', RoleController::class);
+    Route::resource('roles', RoleController::class);
 
     /*
      * Routes
