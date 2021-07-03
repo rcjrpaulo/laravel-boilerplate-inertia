@@ -65,7 +65,7 @@
                         Voltar
                     </inertia-link>
 
-                    <button type="submit" class="btn btn-success">
+                    <button type="submit" class="btn btn-success mx-2">
                         Salvar
                     </button>
                 </div>
