@@ -47,7 +47,6 @@ class User extends Authenticatable
     ];
     
     protected $appends = [
-        'photo_url',
         'created_at_label',
     ];
 
@@ -75,14 +74,6 @@ class User extends Authenticatable
     /**
      * Accessors
      */
-    public function getPhotoUrlAttribute()
-    {
-        if (empty($this->photo) || ! Storage::exists($this->photo)) {
-            return '/images/profile.png';
-        }
-
-        return Storage::url($this->photo);
-    }
     public function getCreatedAtLabelAttribute()
     {
         if (empty($this->created_at)) {
