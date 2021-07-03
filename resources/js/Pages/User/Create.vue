@@ -61,7 +61,7 @@
                 </div>
 
                 <div class="card-footer">
-                    <inertia-link href="route('users.index')" class="btn btn-primary">
+                    <inertia-link :href="route('users.index')" class="btn btn-primary">
                         Voltar
                     </inertia-link>
 
