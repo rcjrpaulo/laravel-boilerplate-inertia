@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\ServiceProvider;
+use Inertia\Inertia;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -14,6 +15,14 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        Inertia::share('flash', function() {
+            return [
+                'success' => session()->get('success'),
+                'warning' => session()->get('warning'),
+                'error' => session()->get('error'),
+            ];
+        });
+        
         $this->publishes(
             [
                 __DIR__ . '/pt_BR.json' => resource_path('lang/pt_BR.json'),

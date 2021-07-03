@@ -19767,8 +19767,20 @@ var _hoisted_27 = {
 var _hoisted_28 = {
   "class": "container-fluid"
 };
+var _hoisted_29 = {
+  key: 0,
+  "class": "alert alert-success"
+};
+var _hoisted_30 = {
+  key: 1,
+  "class": "alert alert-warning"
+};
+var _hoisted_31 = {
+  key: 2,
+  "class": "alert alert-danger"
+};
 
-var _hoisted_29 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<footer class=\"main-footer text-center\"><span class=\"text-muted\"><span>Feito com muito</span> <span><i class=\"fa fa-heart text-danger fa-pulse\"></i></span> <span>pela <a href=\"http://www.agily.com.br\" target=\"_blank\">Agily Tecnologia</a></span></span></footer><div id=\"sidebar-overlay\"></div>", 2);
+var _hoisted_32 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<footer class=\"main-footer text-center\"><span class=\"text-muted\"><span>Feito com muito</span> <span><i class=\"fa fa-heart text-danger fa-pulse\"></i></span> <span>pela <a href=\"http://www.agily.com.br\" target=\"_blank\">Agily Tecnologia</a></span></span></footer><div id=\"sidebar-overlay\"></div>", 2);
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_breeze_dropdown_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("breeze-dropdown-link");
@@ -19836,7 +19848,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* PROPS */
   , ["href"])])])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_24, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("section", _hoisted_25, [_ctx.$slots.header ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_26, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_27, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(_ctx.$slots, "header")])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_28, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_breeze_validation_errors, {
     "class": "m-4"
-  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(_ctx.$slots, "default")])])]), _hoisted_29])]);
+  }), _ctx.$page.props.flash.success ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_29, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$page.props.flash.success), 1
+  /* TEXT */
+  )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _ctx.$page.props.flash.warning ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_30, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$page.props.flash.warning), 1
+  /* TEXT */
+  )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _ctx.$page.props.flash.error ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_31, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$page.props.flash.error), 1
+  /* TEXT */
+  )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(_ctx.$slots, "default")])])]), _hoisted_32])]);
 }
 
 /***/ }),

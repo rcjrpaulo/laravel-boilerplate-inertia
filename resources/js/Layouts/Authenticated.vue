@@ -59,6 +59,18 @@
             <div class="container-fluid">
               <breeze-validation-errors class="m-4" />
 
+              <div v-if="$page.props.flash.success" class="alert alert-success">
+                {{ $page.props.flash.success }}
+              </div>
+
+              <div v-if="$page.props.flash.warning" class="alert alert-warning">
+                {{ $page.props.flash.warning }}
+              </div>
+
+              <div v-if="$page.props.flash.error" class="alert alert-danger">
+                {{ $page.props.flash.error }}
+              </div>
+
               <slot />
             </div>
           </section>
