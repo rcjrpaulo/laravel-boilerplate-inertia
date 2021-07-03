@@ -57,7 +57,9 @@
             </div>
 
             <div class="container-fluid">
-              <breeze-validation-errors class="m-4" />
+              <div v-if="$page.props.errors" class="alert alert-danger" :key="error" v-for="error in $page.props.errors">
+                {{ error }}
+              </div>
 
               <div v-if="$page.props.flash.success" class="alert alert-success">
                 {{ $page.props.flash.success }}
