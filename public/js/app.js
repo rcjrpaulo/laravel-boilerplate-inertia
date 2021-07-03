@@ -19437,27 +19437,21 @@ __webpack_require__.r(__webpack_exports__);
     BreezeAuthenticatedLayout: _Layouts_Authenticated__WEBPACK_IMPORTED_MODULE_1__.default,
     Pagination: _Shared_Pagination__WEBPACK_IMPORTED_MODULE_0__.default
   },
-  mounted: function mounted() {
-    console.log('fsdjalkjfdlsa');
-    console.log(this.users);
-  },
   methods: {
     deleteUser: function deleteUser(userId) {
-      var _this = this;
-
-      this.$swal({
-        title: "Você está prestes a deletar um usuário, tem certeza disso?",
-        showDenyButton: true,
-        confirmButtonText: "Sim",
-        denyButtonText: "N\xE3o"
-      }).then(function (result) {
-        if (result.isConfirmed) {
-          _this.$inertia.post("/users/destroy/".concat(userId));
-        }
-      });
+      this.$inertia["delete"](route('users.destroy', userId)); // this.$swal({
+      //   title: "Você está prestes a deletar um usuário, tem certeza disso?",
+      //   showDenyButton: true,
+      //   confirmButtonText: `Sim`,
+      //   denyButtonText: `Não`,
+      // }).then((result) => {
+      //   if (result.isConfirmed) {
+      //     this.$inertia.post(`/users/destroy/${userId}`);
+      //   }
+      // });
     },
     filterSearch: function filterSearch() {
-      this.$inertia.get("/users", this.filters);
+      this.$inertia.get(route('users.index'), this.filters);
     }
   }
 });

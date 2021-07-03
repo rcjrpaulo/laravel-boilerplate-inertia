@@ -156,25 +156,23 @@ export default {
     BreezeAuthenticatedLayout,
     Pagination,
   },
-  mounted() {
-    console.log('fsdjalkjfdlsa');
-    console.log(this.users);
-  },
   methods: {
     deleteUser: function (userId) {
-      this.$swal({
-        title: "Você está prestes a deletar um usuário, tem certeza disso?",
-        showDenyButton: true,
-        confirmButtonText: `Sim`,
-        denyButtonText: `Não`,
-      }).then((result) => {
-        if (result.isConfirmed) {
-          this.$inertia.post(`/users/destroy/${userId}`);
-        }
-      });
+      this.$inertia.delete(route('users.destroy', userId));
+
+      // this.$swal({
+      //   title: "Você está prestes a deletar um usuário, tem certeza disso?",
+      //   showDenyButton: true,
+      //   confirmButtonText: `Sim`,
+      //   denyButtonText: `Não`,
+      // }).then((result) => {
+      //   if (result.isConfirmed) {
+      //     this.$inertia.post(`/users/destroy/${userId}`);
+      //   }
+      // });
     },
     filterSearch: function () {
-      this.$inertia.get("/users", this.filters);
+      this.$inertia.get(route('users.index'), this.filters);
     },
   },
 };
