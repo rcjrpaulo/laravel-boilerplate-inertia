@@ -1,7 +1,5 @@
 <?php
 
-use App\Http\Controllers\Web\RoleController;
-use App\Http\Controllers\Web\UserController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -30,17 +28,17 @@ Route::group(['middleware' => 'auth'], function () {
     /*
      * Resources
      * */
-    Route::resource('users', UserController::class);
-    Route::resource('roles', RoleController::class);
+//    Route::resource('users', UserController::class);
+//    Route::resource('roles', RoleController::class);
 
     /*
      * Routes
      * */
     Route::get('/dashboard', function () {
-        return view('dashboard');
+        return Inertia::render('Dashboard');
     })->name('dashboard');
 
-    Route::post('roles/update-permissions/{role}', [RoleController::class, 'updatePermissions'])->name('roles.update.permissions');
+//    Route::post('roles/update-permissions/{role}', [RoleController::class, 'updatePermissions'])->name('roles.update.permissions');
 });
 
 require __DIR__.'/auth.php';
