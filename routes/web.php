@@ -39,8 +39,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/dashboard', function () {
         return Inertia::render('Dashboard');
     })->name('dashboard');
-
-//    Route::post('roles/update-permissions/{role}', [RoleController::class, 'updatePermissions'])->name('roles.update.permissions');
+    
+    Route::post('roles/update-permissions/{role}', [RoleController::class, 'updatePermissions'])->name('roles.update.permissions');
 });
 
 require __DIR__.'/auth.php';

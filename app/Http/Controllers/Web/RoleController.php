@@ -34,7 +34,7 @@ class RoleController extends Controller
     {
         $this->authorize('create_roles');
 
-        return view('roles.create');
+        return Inertia::render('Role/Create');
     }
 
     public function store(StoreRoleRequest $storeRoleRequest)
@@ -52,7 +52,7 @@ class RoleController extends Controller
     {
         $this->authorize('read_roles');
 
-        return view('roles.show', compact('role'));
+        return Inertia::render('Role/Show', compact('role'));
     }
 
     public function edit(Role $role)
@@ -62,7 +62,7 @@ class RoleController extends Controller
         $groupPermissions = Permission::get()->groupBy('group_label');
         $role = $role->load('permissions');
 
-        return view('roles.edit', compact('role', 'groupPermissions'));
+        return Inertia::render('Role/Edit', compact('role', 'groupPermissions'));
     }
 
     public function update(UpdateRoleRequest $updateRoleRequest, Role $role)
