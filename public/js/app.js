@@ -20232,7 +20232,9 @@ var _hoisted_11 = {
 };
 var _hoisted_12 = {
   href: "#",
-  "class": "d-block"
+  "class": "d-block",
+  "data-toggle": "modal",
+  "data-target": "#userPhotoModal"
 };
 var _hoisted_13 = {
   "class": "mt-2"

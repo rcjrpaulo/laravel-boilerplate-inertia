@@ -19,7 +19,7 @@
           <div class="sidebar">
             <div class="user-panel mt-3 pb-3 mb-3 d-flex">
               <div class="image"><img :src="$page.props.auth.user.photo ? `/${$page.props.auth.user.photo}` : '/images/profile.png'" alt="User Image" class="img-circle elevation-2"></div>
-              <div class="info"><a href="#" class="d-block">
+              <div class="info"><a href="#" class="d-block" data-toggle="modal" data-target="#userPhotoModal">
                 {{ $page.props.auth.user.name }}
               </a>
               </div>

@@ -57,6 +57,49 @@
     <body class="font-sans antialiased">
         @inertia
 
+        <!-- Modal Atualizar User Photo -->
+        <div class="modal fade" id="userPhotoModal" tabindex="-1" role="dialog" aria-labelledby="userPhotoModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Atualizar Foto de Perfil</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form action="{{ route('users.update', auth()->user()->id) }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        @method('PUT')
+
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-12 my-2">
+                                    <span>Foto atual</span>
+                                </div>
+
+                                <div class="col-12 my-2">
+                                    <div class="image">
+                                        <img width="30" src="{{ auth()->user()->photo ? "/" . auth()->user()->photo : '/images/profile.png' }}" alt="User Image" class="img-circle elevation-2">
+                                    </div>
+                                </div>
+
+                                <div class="col-12 my-2">
+                                    <input type="file" name="photo" class="form-control" required>
+                                </div>
+
+                                <div class="col-12 my-2">
+                                    <button type="submit" class="btn btn-success">Atualizar foto</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         @env ('local')
             <script src="http://localhost:3000/browser-sync/browser-sync-client.js"></script>
         @endenv
