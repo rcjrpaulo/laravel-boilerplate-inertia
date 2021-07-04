@@ -19459,46 +19459,29 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
-    user: Object,
-    roles: Array
+    groupPermissions: Object,
+    role: Object
   },
   data: function data() {
     return {
       form: {
         name: '',
-        role_id: '',
-        email: '',
-        password: ''
-      },
-      photo: '',
-      url: ''
+        password: '',
+        _method: 'PUT'
+      }
     };
   },
   components: {
     BreezeAuthenticatedLayout: _Layouts_Authenticated__WEBPACK_IMPORTED_MODULE_0__.default
   },
   mounted: function mounted() {
-    this.form.name = this.user.name;
-    this.form.role_id = this.user.role_id;
-    this.form.email = this.user.email;
+    this.form.name = this.role.name;
+    this.form.label = this.role.label;
+    console.log('this.groupPermissions'); // console.log(Object.keys(this.groupPermissions)[0], this.groupPermissions[Object.keys(this.groupPermissions)[0]]);
   },
   methods: {
-    updateUser: function updateUser() {
-      var formData = new FormData();
-      formData.append('photo', this.photo);
-      formData.append('name', this.form.name);
-      formData.append('email', this.form.email);
-      formData.append('role_id', this.form.role_id);
-      formData.append('password', this.form.password);
-      formData.append('_method', 'PUT');
-      this.$inertia.post(route('users.update', this.user.id), formData);
-    },
-    handleFileUpload: function handleFileUpload() {
-      this.photo = this.$refs.photo.files[0];
-      this.url = URL.createObjectURL(this.photo);
-    },
-    selectNewPhoto: function selectNewPhoto() {
-      this.$refs.photo.click();
+    updateRole: function updateRole() {
+      this.$inertia.post(route('roles.update', this.role.id), this.form);
     }
   }
 });
@@ -21337,7 +21320,7 @@ var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("
   href: "javascript:void(0)"
 }, "Home")]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("li", {
   "class": "breadcrumb-item active"
-}, "Usuários")])])])])], -1
+}, "Papéis")])])])])], -1
 /* HOISTED */
 );
 
@@ -21349,7 +21332,7 @@ var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("
   "class": "card-header"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h3", {
   "class": "card-title"
-}, "Editar usuário")], -1
+}, "Editar papel")], -1
 /* HOISTED */
 );
 
@@ -21357,61 +21340,32 @@ var _hoisted_4 = {
   "class": "card-body"
 };
 var _hoisted_5 = {
-  "class": "w-100 flex flex-column justify-center items-center m-2"
-};
-var _hoisted_6 = {
-  "class": "rounded-full w-40 h-40"
-};
-var _hoisted_7 = {
-  "class": "form-group flex justify-center items-center"
-};
-var _hoisted_8 = {
   "class": "form-group"
 };
 
-var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
   "for": "name"
 }, "Nome", -1
 /* HOISTED */
 );
 
-var _hoisted_10 = {
+var _hoisted_7 = {
   "class": "form-group"
 };
 
-var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
-  "for": "email"
-}, "Email", -1
+var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+  "for": "label"
+}, "Label", -1
 /* HOISTED */
 );
 
-var _hoisted_12 = {
-  "class": "form-group"
-};
-
-var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
-  "for": "password"
-}, "Senha", -1
-/* HOISTED */
-);
-
-var _hoisted_14 = {
-  "class": "form-group"
-};
-
-var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
-  "for": "role_id"
-}, "Papel", -1
-/* HOISTED */
-);
-
-var _hoisted_16 = {
+var _hoisted_9 = {
   "class": "card-footer"
 };
 
-var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Voltar ");
+var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Voltar ");
 
-var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
+var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
   type: "submit",
   "class": "btn btn-success mx-2"
 }, " Salvar ", -1
@@ -21427,102 +21381,44 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [_hoisted_1, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_2, [_hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("form", {
         role: "form",
-        onSubmit: _cache[6] || (_cache[6] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
-          return $options.updateUser && $options.updateUser.apply($options, arguments);
+        onSubmit: _cache[3] || (_cache[3] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
+          return $options.updateRole && $options.updateRole.apply($options, arguments);
         }, ["prevent"]))
-      }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_6, [!$data.url ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("img", {
-        key: 0,
-        src: $props.user.photo ? '/' + $props.user.photo : '/images/profile.png',
-        "class": "img-circle elevation-2 object-cover",
-        alt: "User Image",
-        width: "150",
-        height: "150"
-      }, null, 8
-      /* PROPS */
-      , ["src"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.url ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("img", {
-        key: 1,
-        src: $data.url,
-        "class": "img-circle elevation-2 object-cover",
-        alt: "User Image",
-        width: "150",
-        height: "150"
-      }, null, 8
-      /* PROPS */
-      , ["src"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
-        type: "file",
-        id: "photo",
-        name: "photo",
-        ref: "photo",
-        onChange: _cache[1] || (_cache[1] = function ($event) {
-          return $options.handleFileUpload();
-        })
-      }, null, 544
-      /* HYDRATE_EVENTS, NEED_PATCH */
-      )])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_8, [_hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+      }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_5, [_hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
         type: "text",
         "class": "form-control",
         id: "name",
         name: "name",
-        "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
+        "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
           return $data.form.name = $event;
         }),
         required: ""
       }, null, 512
       /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.name]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_10, [_hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
-        type: "email",
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.name]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_7, [_hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        type: "text",
         "class": "form-control",
-        id: "email",
-        name: "email",
-        "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
-          return $data.form.email = $event;
+        id: "label",
+        name: "label",
+        "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
+          return $data.form.label = $event;
         }),
         required: ""
       }, null, 512
       /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.email]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_12, [_hoisted_13, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
-        placeholder: "Insira uma nova senha caso queira alterar",
-        type: "password",
-        "class": "form-control",
-        id: "password",
-        name: "password",
-        "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
-          return $data.form.password = $event;
-        })
-      }, null, 512
-      /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.password]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_14, [_hoisted_15, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("select", {
-        "class": "form-control",
-        id: "role_id",
-        name: "role_id",
-        "onUpdate:modelValue": _cache[5] || (_cache[5] = function ($event) {
-          return $data.form.role_id = $event;
-        }),
-        required: ""
-      }, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.roles, function (role, index) {
-        return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("option", {
-          value: role.id,
-          key: index
-        }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(role.label), 9
-        /* TEXT, PROPS */
-        , ["value"]);
-      }), 128
-      /* KEYED_FRAGMENT */
-      ))], 512
-      /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $data.form.role_id]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_16, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
-        href: _ctx.route('users.index'),
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.label]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
+        href: _ctx.route('roles.index'),
         "class": "btn btn-primary"
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [_hoisted_17];
+          return [_hoisted_10];
         }),
         _: 1
         /* STABLE */
 
       }, 8
       /* PROPS */
-      , ["href"]), _hoisted_18])], 32
+      , ["href"]), _hoisted_11])], 32
       /* HYDRATE_EVENTS */
       )])];
     }),
