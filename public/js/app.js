@@ -19468,7 +19468,8 @@ __webpack_require__.r(__webpack_exports__);
         name: '',
         password: '',
         _method: 'PUT'
-      }
+      },
+      permissions: []
     };
   },
   components: {
@@ -19477,11 +19478,17 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     this.form.name = this.role.name;
     this.form.label = this.role.label;
-    console.log('this.groupPermissions'); // console.log(Object.keys(this.groupPermissions)[0], this.groupPermissions[Object.keys(this.groupPermissions)[0]]);
+    this.permissions = this.role.array_permissions;
   },
   methods: {
     updateRole: function updateRole() {
       this.$inertia.post(route('roles.update', this.role.id), this.form);
+    },
+    updatePermissions: function updatePermissions() {
+      var data = {
+        permissions: this.permissions
+      };
+      this.$inertia.post(route('roles.update.permissions', this.role.id), data);
     }
   }
 });
@@ -21372,7 +21379,34 @@ var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(
 /* HOISTED */
 );
 
+var _hoisted_12 = {
+  "class": "card card-light"
+};
+
+var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+  "class": "card-header"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h3", {
+  "class": "card-title"
+}, "Permissões")], -1
+/* HOISTED */
+);
+
+var _hoisted_14 = {
+  "class": "form-check"
+};
+
+var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+  "class": "card-footer"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
+  type: "submit",
+  "class": "btn btn-success"
+}, " Salvar ")], -1
+/* HOISTED */
+);
+
 function render(_ctx, _cache, $props, $setup, $data, $options) {
+  var _this = this;
+
   var _component_inertia_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("inertia-link");
 
   var _component_breeze_authenticated_layout = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("breeze-authenticated-layout");
@@ -21419,6 +21453,45 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }, 8
       /* PROPS */
       , ["href"]), _hoisted_11])], 32
+      /* HYDRATE_EVENTS */
+      )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_12, [_hoisted_13, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("form", {
+        role: "form",
+        onSubmit: _cache[5] || (_cache[5] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
+          return $options.updatePermissions && $options.updatePermissions.apply($options, arguments);
+        }, ["prevent"]))
+      }, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(Object.keys(_this.groupPermissions), function (groupPermission) {
+        return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", {
+          "class": "row card-body",
+          key: groupPermission
+        }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(groupPermission), 1
+        /* TEXT */
+        ), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(_this.groupPermissions[groupPermission], function (permission) {
+          return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", {
+            "class": "col-12",
+            key: permission.id
+          }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+            "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
+              return $data.permissions = $event;
+            }),
+            "class": "form-check-input",
+            type: "checkbox",
+            name: permission.label,
+            value: permission.id,
+            id: permission.label
+          }, null, 8
+          /* PROPS */
+          , ["name", "value", "id"]), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelCheckbox, $data.permissions]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+            "class": "form-check-label",
+            "for": permission.label
+          }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(permission.label), 9
+          /* TEXT, PROPS */
+          , ["for"])])]);
+        }), 128
+        /* KEYED_FRAGMENT */
+        ))]);
+      }), 128
+      /* KEYED_FRAGMENT */
+      )), _hoisted_15], 32
       /* HYDRATE_EVENTS */
       )])];
     }),

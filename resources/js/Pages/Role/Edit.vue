@@ -44,6 +44,25 @@
                 </div>
             </form>
         </div>
+
+    <div class="card card-light">
+      <div class="card-header">
+        <h3 class="card-title">Permissões</h3> </div>
+      <form role="form" @submit.prevent="updatePermissions">
+        <div class="row card-body" :key="groupPermission" v-for="groupPermission in Object.keys(this.groupPermissions)">
+          <p>{{ groupPermission }}</p>
+          <div class="col-12" :key="permission.id" v-for="(permission) in this.groupPermissions[groupPermission]">
+            <div class="form-check">
+              <input v-model="permissions" class="form-check-input" type="checkbox" :name="permission.label" :value="permission.id" :id="permission.label">
+              <label class="form-check-label" :for="permission.label">{{ permission.label }}</label>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <button type="submit" class="btn btn-success"> Salvar </button>
+        </div>
+      </form>
+    </div>
     </breeze-authenticated-layout>
 </template>
 
@@ -62,6 +81,7 @@ export default {
                 password: '',
                 _method: 'PUT'
             },
+            permissions: [],
         }
     },
     components: {
@@ -70,12 +90,18 @@ export default {
     mounted() {
         this.form.name = this.role.name
         this.form.label = this.role.label
-        console.log('this.groupPermissions');
-        // console.log(Object.keys(this.groupPermissions)[0], this.groupPermissions[Object.keys(this.groupPermissions)[0]]);
+        this.permissions = this.role.array_permissions
     },
     methods: {
         updateRole: function () {
             this.$inertia.post(route('roles.update', this.role.id), this.form)
+        },
+        updatePermissions: function () {
+            const data = {
+              permissions: this.permissions
+            }
+
+            this.$inertia.post(route('roles.update.permissions', this.role.id), data)
         },
     }
 }
