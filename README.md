@@ -72,7 +72,7 @@ $ php artisan serve
         Tratando todos os erros por meio do Handler.php  (app/Exceptions/Handler.php)
     </li>
     <li>
-        Componente Blade já integrado ao adminLTE para mostrar as mensagens do tipo success, error e warning (session()->flash('erro', 'mensagem de erro'))
+        Componente vue já integrado ao adminLTE para mostrar as mensagens do tipo success, error e warning (session()->flash('erro', 'mensagem de erro'))
     </li>
     <li>
         Fazendo os Gates de permissões automático no AuthServiceProvider.php por meio da tabela permissions (@can e $this->authorize)
@@ -91,8 +91,5 @@ $ php artisan serve
     </li>
     <li>
         Exemplo de paginação feita usando o bootstrap 4 (usado no Admin LTE 3), podendo alterar número de itens por página e filtro por nome ou label
-    </li>
-    <li>
-        Classe CSS feita (<b>confirm-delete</b>) para formulários (tag form) que precisam confirmar ação de deletar usando Sweet Alert
     </li>
 </ul>
