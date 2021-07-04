@@ -60,8 +60,8 @@ class RoleController extends Controller
         $this->authorize('update_roles');
 
         $groupPermissions = Permission::get()->groupBy('group_label');
-        $role = $role->load('permissions');
-
+        $role->array_permissions = $role->permissions->pluck('id')->toArray();
+    
         return Inertia::render('Role/Edit', compact('role', 'groupPermissions'));
     }
 
